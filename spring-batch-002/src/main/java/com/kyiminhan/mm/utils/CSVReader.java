@@ -13,6 +13,16 @@ import org.apache.commons.lang3.StringUtils;
 import com.kyiminhan.mm.spring.entity.Department;
 import com.kyiminhan.mm.spring.entity.Employee;
 
+/**
+ * The Class CSVReader.<BR>
+ *
+ * @author KYIMINHAN <BR>
+ * @version 1.0 <BR>
+ * @since 2019/06/19 <BR>
+ * spring-batch-002 system <BR>
+ * com.kyiminhan.mm.utils <BR>
+ * CSVReader.java <BR>
+ */
 public class CSVReader {
 
 	/** The instance. */
@@ -25,6 +35,11 @@ public class CSVReader {
 
 	}
 
+	/**
+	 * Gets the instance.
+	 *
+	 * @return the instance
+	 */
 	public static CSVReader getInstance() {
 		if (null == CSVReader.instance) {
 			synchronized (CSVReader.class) {
@@ -38,7 +53,7 @@ public class CSVReader {
 	 * Read file.
 	 *
 	 * @param fileName the file name
-	 * @param type     the type
+	 * @param type the type
 	 * @return List
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */

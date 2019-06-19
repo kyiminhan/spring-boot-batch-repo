@@ -21,14 +21,14 @@ import com.kyiminhan.mm.spring.task.TaskTwo;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/19 <BR>
- *        spring-batch-001 system <BR>
- *        com.kyiminhan.mm.spring.config <BR>
- *        BatchConfig.java <BR>
+ * spring-batch-002 system <BR>
+ * com.kyiminhan.mm.spring.config <BR>
+ * BatchConfig.java <BR>
  */
 @Configuration
-@EnableJpaRepositories(basePackages = "com.kyiminhan.mm")
-@ComponentScan(basePackages = "com.kyiminhan.mm")
 @EnableBatchProcessing
+@ComponentScan(basePackages = "com.kyiminhan.mm")
+@EnableJpaRepositories(basePackages = "com.kyiminhan.mm")
 public class BatchConfig {
 
 	/** The jobs. */
@@ -39,6 +39,10 @@ public class BatchConfig {
 	@Autowired
 	private StepBuilderFactory steps;
 
+	/** The task one. */
+	@Autowired
+	private TaskOne taskOne;
+
 	/**
 	 * Step one.
 	 *
@@ -46,7 +50,7 @@ public class BatchConfig {
 	 */
 	@Bean
 	public Step stepOne() {
-		return this.steps.get("stepOne").tasklet(new TaskOne()).build();
+		return this.steps.get("stepOne").tasklet(this.taskOne).build();
 	}
 
 	/**

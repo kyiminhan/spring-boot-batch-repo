@@ -15,9 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/19 <BR>
- *        spring-batch-002 system <BR>
- *        com.kyiminhan.mm.spring <BR>
- *        SpringBatch002Application.java <BR>
+ * spring-batch-002 system <BR>
+ * com.kyiminhan.mm.spring <BR>
+ * SpringBatch002Application.java <BR>
  */
 @SpringBootApplication
 public class SpringBatch002Application implements CommandLineRunner {

@@ -11,7 +11,7 @@ import org.springframework.batch.repeat.RepeatStatus;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/19 <BR>
- * spring-batch-001 system <BR>
+ * spring-batch-002 system <BR>
  * com.kyiminhan.mm.spring.task <BR>
  * TaskTwo.java <BR>
  */

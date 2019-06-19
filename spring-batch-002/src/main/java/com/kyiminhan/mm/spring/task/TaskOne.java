@@ -23,16 +23,19 @@ import com.kyiminhan.mm.utils.TableType;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/19 <BR>
- *        spring-batch-001 system <BR>
- *        com.kyiminhan.mm.spring.task <BR>
- *        TaskOne.java <BR>
+ * spring-batch-002 system <BR>
+ * com.kyiminhan.mm.spring.task <BR>
+ * TaskOne.java <BR>
  */
 @Component
 public class TaskOne implements Tasklet {
 
+	/** The department service. */
 	@Autowired
 	@Qualifier(value = "departmentService")
 	private DepartmentService departmentService;
+	
+	/** The employee service. */
 	@Autowired
 	@Qualifier(value = "employeeService")
 	private EmployeeService employeeService;
