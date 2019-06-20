@@ -4,6 +4,8 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The listener interface for receiving jobResult events. The class that is
  * interested in processing a jobResult event implements this interface, and the
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Component;
  *
  * @see JobResultEvent
  */
+@Log4j2
 @Component
 public class JobResultListener implements JobExecutionListener {
 
@@ -23,9 +26,9 @@ public class JobResultListener implements JobExecutionListener {
 	 */
 	@Override
 	public void beforeJob(final JobExecution jobExecution) {
-		System.out.println("**************************************************");
-		System.out.println("Called beforeJob()." + this.getClass());
-		System.out.println("**************************************************");
+		JobResultListener.log.info("**************************************************");
+		JobResultListener.log.info("Called beforeJob()." + this.getClass());
+		JobResultListener.log.info("**************************************************");
 	}
 
 	/**
@@ -35,8 +38,8 @@ public class JobResultListener implements JobExecutionListener {
 	 */
 	@Override
 	public void afterJob(final JobExecution jobExecution) {
-		System.out.println("**************************************************");
-		System.out.println("Called afterJob()." + this.getClass());
-		System.out.println("**************************************************");
+		JobResultListener.log.info("**************************************************");
+		JobResultListener.log.info("Called afterJob()." + this.getClass());
+		JobResultListener.log.info("**************************************************");
 	}
 }

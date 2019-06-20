@@ -6,6 +6,8 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The Class TaskTwo.<BR>
  *
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
  *        com.kyiminhan.mm.spring.task <BR>
  *        TaskTwo.java <BR>
  */
+@Log4j2
 @Component
 public class TaskTwo implements Tasklet {
 
@@ -30,13 +33,13 @@ public class TaskTwo implements Tasklet {
 	@Override
 	public RepeatStatus execute(final StepContribution contribution, final ChunkContext chunkContext) throws Exception {
 
-		System.out.println("**************************************************");
-		System.out.println("MyTaskTwo start..");
+		TaskTwo.log.info("**************************************************");
+		TaskTwo.log.info("MyTaskTwo start..");
 
 		// TODO adding Coding
 
-		System.out.println("MyTaskTwo done..");
-		System.out.println("**************************************************");
+		TaskTwo.log.info("MyTaskTwo done..");
+		TaskTwo.log.info("**************************************************");
 		return RepeatStatus.FINISHED;
 	}
 }

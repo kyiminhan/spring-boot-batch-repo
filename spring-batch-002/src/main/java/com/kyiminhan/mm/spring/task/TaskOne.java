@@ -17,6 +17,8 @@ import com.kyiminhan.mm.spring.service.EmployeeService;
 import com.kyiminhan.mm.utils.CSVReader;
 import com.kyiminhan.mm.utils.TableType;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The Class TaskOne.<BR>
  *
@@ -27,6 +29,7 @@ import com.kyiminhan.mm.utils.TableType;
  *        com.kyiminhan.mm.spring.task <BR>
  *        TaskOne.java <BR>
  */
+@Log4j2
 @Component
 public class TaskOne implements Tasklet {
 
@@ -34,7 +37,7 @@ public class TaskOne implements Tasklet {
 	@Autowired
 	@Qualifier(value = "departmentService")
 	private DepartmentService departmentService;
-	
+
 	/** The employee service. */
 	@Autowired
 	@Qualifier(value = "employeeService")
@@ -51,28 +54,28 @@ public class TaskOne implements Tasklet {
 	@Override
 	public RepeatStatus execute(final StepContribution contribution, final ChunkContext chunkContext) throws Exception {
 
-		System.out.println("**************************************************");
-		System.out.println("MyTaskOne start..");
+		TaskOne.log.info("**************************************************");
+		TaskOne.log.info("MyTaskOne start..");
 
 		final String departmentDataFilePath = "src/main/resources/csv/department.csv";
 		final Collection<Object> departments = CSVReader.getInstance().readFile(departmentDataFilePath,
 				TableType.DEPARTMENT);
 		departments.stream().forEach(obj -> {
-			System.out.println(obj);
+			TaskOne.log.info(obj);
 			this.departmentService.save((Department) obj);
 		});
 
 		final String employeeDataFilePath = "src/main/resources/csv/employee.csv";
 		final Collection<Object> employees = CSVReader.getInstance().readFile(employeeDataFilePath, TableType.EMPLOYEE);
 		employees.stream().forEach(obj -> {
-			System.out.println(obj);
+			TaskOne.log.info(obj);
 			this.employeeService.save((Employee) obj);
 		});
 
 		// TODO adding Coding
 
-		System.out.println("MyTaskOne done..");
-		System.out.println("**************************************************");
+		TaskOne.log.info("MyTaskOne done..");
+		TaskOne.log.info("**************************************************");
 		return RepeatStatus.FINISHED;
 	}
 }

@@ -5,6 +5,7 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,7 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *        SpringBatch001Application.java <BR>
  */
 @SpringBootApplication
-public class SpringBatch001Application {
+public class SpringBatch001Application implements CommandLineRunner {
 
 	/** The job launcher. */
 	@Autowired
@@ -44,6 +45,7 @@ public class SpringBatch001Application {
 	 * @param args the args
 	 * @throws Exception the exception
 	 */
+	@Override
 	public void run(final String... args) throws Exception {
 		final JobParameters params = new JobParametersBuilder()
 				.addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();

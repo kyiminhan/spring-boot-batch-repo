@@ -3,6 +3,8 @@ package com.kyiminhan.mm.spring.listener;
 import org.springframework.batch.core.ItemReadListener;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The listener interface for receiving stepItemRead events. The class that is
  * interested in processing a stepItemRead event implements this interface, and
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
  *
  * @see StepItemReadEvent
  */
+@Log4j2
 @Component
 public class StepItemReadListener implements ItemReadListener<String> {
 
@@ -20,9 +23,9 @@ public class StepItemReadListener implements ItemReadListener<String> {
 	 */
 	@Override
 	public void beforeRead() {
-		System.out.println("**************************************************");
-		System.out.println("ItemReadListener - beforeRead" + this.getClass());
-		System.out.println("**************************************************");
+		StepItemReadListener.log.info("**************************************************");
+		StepItemReadListener.log.info("ItemReadListener - beforeRead" + this.getClass());
+		StepItemReadListener.log.info("**************************************************");
 	}
 
 	/**
@@ -32,9 +35,9 @@ public class StepItemReadListener implements ItemReadListener<String> {
 	 */
 	@Override
 	public void afterRead(final String item) {
-		System.out.println("**************************************************");
-		System.out.println("ItemReadListener - afterRead" + this.getClass());
-		System.out.println("**************************************************");
+		StepItemReadListener.log.info("**************************************************");
+		StepItemReadListener.log.info("ItemReadListener - afterRead" + this.getClass());
+		StepItemReadListener.log.info("**************************************************");
 	}
 
 	/**
@@ -44,8 +47,8 @@ public class StepItemReadListener implements ItemReadListener<String> {
 	 */
 	@Override
 	public void onReadError(final Exception ex) {
-		System.out.println("**************************************************");
-		System.out.println("ItemReadListener - onReadError" + this.getClass());
-		System.out.println("**************************************************");
+		StepItemReadListener.log.info("**************************************************");
+		StepItemReadListener.log.info("ItemReadListener - onReadError" + this.getClass());
+		StepItemReadListener.log.info("**************************************************");
 	}
 }

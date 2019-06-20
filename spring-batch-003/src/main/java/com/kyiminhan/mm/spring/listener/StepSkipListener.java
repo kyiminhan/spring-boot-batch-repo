@@ -3,6 +3,8 @@ package com.kyiminhan.mm.spring.listener;
 import org.springframework.batch.core.SkipListener;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The listener interface for receiving stepSkip events. The class that is
  * interested in processing a stepSkip event implements this interface, and the
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
  *
  * @see StepSkipEvent
  */
+@Log4j2
 @Component
 public class StepSkipListener implements SkipListener<String, Number> {
 
@@ -22,9 +25,9 @@ public class StepSkipListener implements SkipListener<String, Number> {
 	 */
 	@Override
 	public void onSkipInRead(final Throwable t) {
-		System.out.println("**************************************************");
-		System.out.println("StepSkipListener - onSkipInRead" + this.getClass());
-		System.out.println("**************************************************");
+		StepSkipListener.log.info("**************************************************");
+		StepSkipListener.log.info("StepSkipListener - onSkipInRead" + this.getClass());
+		StepSkipListener.log.info("**************************************************");
 	}
 
 	/**
@@ -35,9 +38,9 @@ public class StepSkipListener implements SkipListener<String, Number> {
 	 */
 	@Override
 	public void onSkipInWrite(final Number item, final Throwable t) {
-		System.out.println("**************************************************");
-		System.out.println("StepSkipListener - onSkipInWrite" + this.getClass());
-		System.out.println("**************************************************");
+		StepSkipListener.log.info("**************************************************");
+		StepSkipListener.log.info("StepSkipListener - onSkipInWrite" + this.getClass());
+		StepSkipListener.log.info("**************************************************");
 	}
 
 	/**
@@ -48,8 +51,8 @@ public class StepSkipListener implements SkipListener<String, Number> {
 	 */
 	@Override
 	public void onSkipInProcess(final String item, final Throwable t) {
-		System.out.println("**************************************************");
-		System.out.println("StepSkipListener - onSkipInProcess" + this.getClass());
-		System.out.println("**************************************************");
+		StepSkipListener.log.info("**************************************************");
+		StepSkipListener.log.info("StepSkipListener - onSkipInProcess" + this.getClass());
+		StepSkipListener.log.info("**************************************************");
 	}
 }

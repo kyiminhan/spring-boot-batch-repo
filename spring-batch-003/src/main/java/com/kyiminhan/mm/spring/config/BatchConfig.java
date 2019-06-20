@@ -8,6 +8,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.kyiminhan.mm.spring.listener.JobResultListener;
@@ -33,8 +34,9 @@ import lombok.Setter;
  */
 @Configuration
 @EnableBatchProcessing
-@Setter(onMethod = @__(@Autowired))
 @SuppressWarnings("unused")
+@Setter(onMethod = @__(@Autowired))
+@ComponentScan(basePackages = "com.kyiminhan.mm")
 public class BatchConfig {
 
 	/** The jobs. */

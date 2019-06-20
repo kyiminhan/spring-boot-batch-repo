@@ -5,6 +5,8 @@ import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.StepExecutionListener;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The listener interface for receiving stepResult events. The class that is
  * interested in processing a stepResult event implements this interface, and
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @see StepResultEvent
  */
+@Log4j2
 @Component
 public class StepResultListener implements StepExecutionListener {
 
@@ -24,9 +27,9 @@ public class StepResultListener implements StepExecutionListener {
 	 */
 	@Override
 	public void beforeStep(final StepExecution stepExecution) {
-		System.out.println("**************************************************");
-		System.out.println("Called beforeStep()." + this.getClass());
-		System.out.println("**************************************************");
+		StepResultListener.log.info("**************************************************");
+		StepResultListener.log.info("Called beforeStep()." + this.getClass());
+		StepResultListener.log.info("**************************************************");
 	}
 
 	/**
@@ -37,9 +40,9 @@ public class StepResultListener implements StepExecutionListener {
 	 */
 	@Override
 	public ExitStatus afterStep(final StepExecution stepExecution) {
-		System.out.println("**************************************************");
-		System.out.println("Called afterStep()." + this.getClass());
-		System.out.println("**************************************************");
+		StepResultListener.log.info("**************************************************");
+		StepResultListener.log.info("Called afterStep()." + this.getClass());
+		StepResultListener.log.info("**************************************************");
 		return ExitStatus.COMPLETED;
 	}
 }
