@@ -28,13 +28,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @Entity
-
-/**
- * Builds the.
- *
- * @return Department
- */
-
 /**
  * Builds the.
  *
@@ -42,23 +35,10 @@ import lombok.ToString;
  */
 @Builder
 @ToString
-
-/**
- * Instantiates a new department.
- */
-
 /**
  * Instantiates a new department.
  */
 @NoArgsConstructor
-
-/**
- * Instantiates a new department.
- *
- * @param id the id
- * @param departmentName the department name
- */
-
 /**
  * Instantiates a new department.
  *

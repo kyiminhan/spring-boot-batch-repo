@@ -35,7 +35,7 @@ public class SpringBatch002Application implements CommandLineRunner {
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(final String[] args) {
+	public static void main(final String... args) {
 		SpringApplication.run(SpringBatch002Application.class, args);
 	}
 

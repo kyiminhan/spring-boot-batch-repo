@@ -21,13 +21,14 @@ import lombok.ToString;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/20 <BR>
- *        spring-batch-002 system <BR>
+ *        spring-batch-004 system <BR>
  *        com.kyiminhan.mm.spring.entity <BR>
  *        Employee.java <BR>
  */
 @Getter
 @Setter
 @Entity
+
 /**
  * Builds the.
  *
@@ -35,6 +36,7 @@ import lombok.ToString;
  */
 @Builder
 @ToString
+
 /**
  * Instantiates a new employee.
  */
