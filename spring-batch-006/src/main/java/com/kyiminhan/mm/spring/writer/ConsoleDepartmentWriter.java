@@ -15,10 +15,14 @@ import lombok.extern.log4j.Log4j2;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/20 <BR>
- *        spring-batch-005 system <BR>
+ *        spring-batch-006 system <BR>
  *        com.kyiminhan.mm.spring.writer <BR>
  *        ConsoleDepartmentWriter.java <BR>
  */
+
+/** The Constant log. */
+
+/** The Constant log. */
 @Log4j2
 @Component
 public class ConsoleDepartmentWriter implements ItemWriter<Department> {

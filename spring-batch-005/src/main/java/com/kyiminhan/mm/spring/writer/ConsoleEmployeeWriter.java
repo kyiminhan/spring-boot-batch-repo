@@ -19,8 +19,6 @@ import lombok.extern.log4j.Log4j2;
  *        com.kyiminhan.mm.spring.writer <BR>
  *        ConsoleEmployeeWriter.java <BR>
  */
-
-/** The Constant log. */
 @Log4j2
 @Component
 public class ConsoleEmployeeWriter implements ItemWriter<Employee> {

@@ -21,7 +21,7 @@ import lombok.ToString;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/20 <BR>
- *        spring-batch-004 system <BR>
+ *        spring-batch-005 system <BR>
  *        com.kyiminhan.mm.spring.entity <BR>
  *        Department.java <BR>
  */

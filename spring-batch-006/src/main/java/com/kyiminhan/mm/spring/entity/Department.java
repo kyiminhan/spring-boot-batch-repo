@@ -16,14 +16,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class Employee.<BR>
+ * The Class Department.<BR>
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/20 <BR>
- *        spring-batch-005 system <BR>
+ *        spring-batch-006 system <BR>
  *        com.kyiminhan.mm.spring.entity <BR>
- *        Employee.java <BR>
+ *        Department.java <BR>
  */
 @Getter
 @Setter
@@ -32,27 +32,24 @@ import lombok.ToString;
 /**
  * Builds the.
  *
- * @return Employee
+ * @return Department
  */
 @Builder
 @ToString
 
 /**
- * Instantiates a new employee.
+ * Instantiates a new department.
  */
 @NoArgsConstructor
 
 /**
- * Instantiates a new employee.
+ * Instantiates a new department.
  *
- * @param id      the id
- * @param name    the name
- * @param email   the email
- * @param address the address
- * @param phone   the phone
+ * @param id             the id
+ * @param departmentName the department name
  */
 @AllArgsConstructor
-public class Employee implements Serializable {
+public class Department implements Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -62,19 +59,7 @@ public class Employee implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	/** The name. */
+	/** The department name. */
 	@Column
-	private String name;
-
-	/** The email. */
-	@Column
-	private String email;
-
-	/** The address. */
-	@Column
-	private String address;
-
-	/** The phone. */
-	@Column
-	private String phone;
+	private String departmentName;
 }
