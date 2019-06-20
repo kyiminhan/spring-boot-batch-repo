@@ -18,10 +18,10 @@ import com.kyiminhan.mm.spring.entity.Employee;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/19 <BR>
- * spring-batch-002 system <BR>
- * com.kyiminhan.mm.utils <BR>
- * CSVReader.java <BR>
+ * @since 2019/06/20 <BR>
+ *        spring-batch-002 system <BR>
+ *        com.kyiminhan.mm.utils <BR>
+ *        CSVReader.java <BR>
  */
 public class CSVReader {
 
@@ -53,7 +53,7 @@ public class CSVReader {
 	 * Read file.
 	 *
 	 * @param fileName the file name
-	 * @param type the type
+	 * @param type     the type
 	 * @return List
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */

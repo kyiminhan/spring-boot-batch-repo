@@ -9,10 +9,10 @@ import com.kyiminhan.mm.spring.entity.Department;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/19 <BR>
- * spring-batch-002 system <BR>
- * com.kyiminhan.mm.spring.service <BR>
- * DepartmentService.java <BR>
+ * @since 2019/06/20 <BR>
+ *        spring-batch-002 system <BR>
+ *        com.kyiminhan.mm.spring.service <BR>
+ *        DepartmentService.java <BR>
  */
 public interface DepartmentService {
 

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.kyiminhan.mm.spring.task.TaskOne;
 import com.kyiminhan.mm.spring.task.TaskTwo;
@@ -20,15 +19,14 @@ import com.kyiminhan.mm.spring.task.TaskTwo;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/19 <BR>
- * spring-batch-002 system <BR>
- * com.kyiminhan.mm.spring.config <BR>
- * BatchConfig.java <BR>
+ * @since 2019/06/20 <BR>
+ *        spring-batch-002 system <BR>
+ *        com.kyiminhan.mm.spring.config <BR>
+ *        BatchConfig.java <BR>
  */
 @Configuration
 @EnableBatchProcessing
 @ComponentScan(basePackages = "com.kyiminhan.mm")
-@EnableJpaRepositories(basePackages = "com.kyiminhan.mm")
 public class BatchConfig {
 
 	/** The jobs. */

@@ -18,10 +18,10 @@ import com.kyiminhan.mm.spring.task.TaskTwo;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/19 <BR>
- * spring-batch-001 system <BR>
- * com.kyiminhan.mm.spring.config <BR>
- * BatchConfig.java <BR>
+ * @since 2019/06/20 <BR>
+ *        spring-batch-001 system <BR>
+ *        com.kyiminhan.mm.spring.config <BR>
+ *        BatchConfig.java <BR>
  */
 @Configuration
 @EnableBatchProcessing

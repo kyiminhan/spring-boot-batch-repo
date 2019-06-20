@@ -20,10 +20,10 @@ import lombok.ToString;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/19 <BR>
- * spring-batch-002 system <BR>
- * com.kyiminhan.mm.spring.entity <BR>
- * Employee.java <BR>
+ * @since 2019/06/20 <BR>
+ *        spring-batch-002 system <BR>
+ *        com.kyiminhan.mm.spring.entity <BR>
+ *        Employee.java <BR>
  */
 @Getter
 @Setter
@@ -34,8 +34,18 @@ import lombok.ToString;
  *
  * @return Employee
  */
+
+/**
+ * Builds the.
+ *
+ * @return Employee
+ */
 @Builder
 @ToString
+
+/**
+ * Instantiates a new employee.
+ */
 
 /**
  * Instantiates a new employee.
@@ -50,6 +60,16 @@ import lombok.ToString;
  * @param email the email
  * @param address the address
  * @param phone the phone
+ */
+
+/**
+ * Instantiates a new employee.
+ *
+ * @param id      the id
+ * @param name    the name
+ * @param email   the email
+ * @param address the address
+ * @param phone   the phone
  */
 @AllArgsConstructor
 public class Employee implements Serializable {
