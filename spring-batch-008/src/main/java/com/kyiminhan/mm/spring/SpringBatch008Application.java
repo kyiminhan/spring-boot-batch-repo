@@ -21,7 +21,7 @@ public class SpringBatch008Application {
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(final String[] args) {
+	public static void main(final String... args) {
 		SpringApplication.run(SpringBatch008Application.class, args);
 	}
 }

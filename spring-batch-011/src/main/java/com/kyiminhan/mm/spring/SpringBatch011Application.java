@@ -10,17 +10,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * The Class SpringBatch010Application.<BR>
+ * The Class SpringBatch011Application.<BR>
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/24 <BR>
- *        spring-batch-010 system <BR>
+ *        spring-batch-011 system <BR>
  *        com.kyiminhan.mm.spring <BR>
- *        SpringBatch010Application.java <BR>
+ *        SpringBatch011Application.java <BR>
  */
 @SpringBootApplication
-public class SpringBatch010Application implements CommandLineRunner {
+public class SpringBatch011Application implements CommandLineRunner {
 
 	/** The job launcher. */
 	@Autowired
@@ -36,7 +36,7 @@ public class SpringBatch010Application implements CommandLineRunner {
 	 * @param args the arguments
 	 */
 	public static void main(final String... args) {
-		SpringApplication.run(SpringBatch010Application.class, args);
+		SpringApplication.run(SpringBatch011Application.class, args);
 	}
 
 	/**
