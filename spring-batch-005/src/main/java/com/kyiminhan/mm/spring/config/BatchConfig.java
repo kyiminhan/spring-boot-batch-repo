@@ -7,7 +7,6 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
@@ -110,13 +109,28 @@ public class BatchConfig {
 	 *
 	 * @return FlatFileItemReader
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public FlatFileItemReader<Employee> empReader() {
-		final FlatFileItemReader<Employee> itemReader = new FlatFileItemReader<>();
-		itemReader.setLineMapper(this.empLineMapper());
-		itemReader.setLinesToSkip(1);
-		itemReader.setResource(this.empInputResource);
-		return itemReader;
+		final FlatFileItemReader<Employee> reader = new FlatFileItemReader<>();
+		reader.setLinesToSkip(1);
+		reader.setResource(this.empInputResource);
+		reader.setLineMapper(new DefaultLineMapper() {
+			{
+				this.setLineTokenizer(new DelimitedLineTokenizer() {
+					{
+						this.setNames(new String[] { "id", "address", "email", "name", "phone" });
+						this.setIncludedFields(new int[] { 0, 1, 2, 3, 4 });
+					}
+				});
+				this.setFieldSetMapper(new BeanWrapperFieldSetMapper() {
+					{
+						this.setTargetType(Employee.class);
+					}
+				});
+			}
+		});
+		return reader;
 	}
 
 	/**
@@ -124,48 +138,27 @@ public class BatchConfig {
 	 *
 	 * @return FlatFileItemReader
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public FlatFileItemReader<Department> depReader() {
-		final FlatFileItemReader<Department> itemReader = new FlatFileItemReader<>();
-		itemReader.setLineMapper(this.depLineMapper());
-		itemReader.setLinesToSkip(1);
-		itemReader.setResource(this.depInputResource);
-		return itemReader;
-	}
-
-	/**
-	 * Emp line mapper.
-	 *
-	 * @return LineMapper
-	 */
-	@Bean
-	public LineMapper<Employee> empLineMapper() {
-		final DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<>();
-		final DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
-		lineTokenizer.setNames(new String[] { "id", "address", "email", "name", "phone" });
-		lineTokenizer.setIncludedFields(new int[] { 0, 1, 2, 3, 4 });
-		final BeanWrapperFieldSetMapper<Employee> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
-		fieldSetMapper.setTargetType(Employee.class);
-		lineMapper.setLineTokenizer(lineTokenizer);
-		lineMapper.setFieldSetMapper(fieldSetMapper);
-		return lineMapper;
-	}
-
-	/**
-	 * Dep line mapper.
-	 *
-	 * @return LineMapper
-	 */
-	@Bean
-	public LineMapper<Department> depLineMapper() {
-		final DefaultLineMapper<Department> lineMapper = new DefaultLineMapper<>();
-		final DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
-		lineTokenizer.setNames(new String[] { "id", "departmentName" });
-		lineTokenizer.setIncludedFields(new int[] { 0, 1 });
-		final BeanWrapperFieldSetMapper<Department> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
-		fieldSetMapper.setTargetType(Department.class);
-		lineMapper.setLineTokenizer(lineTokenizer);
-		lineMapper.setFieldSetMapper(fieldSetMapper);
-		return lineMapper;
+		final FlatFileItemReader<Department> reader = new FlatFileItemReader<>();
+		reader.setLinesToSkip(1);
+		reader.setResource(this.empInputResource);
+		reader.setLineMapper(new DefaultLineMapper() {
+			{
+				this.setLineTokenizer(new DelimitedLineTokenizer() {
+					{
+						this.setNames(new String[] { "id", "departmentName" });
+						this.setIncludedFields(new int[] { 0, 1, });
+					}
+				});
+				this.setFieldSetMapper(new BeanWrapperFieldSetMapper() {
+					{
+						this.setTargetType(Department.class);
+					}
+				});
+			}
+		});
+		return reader;
 	}
 }
