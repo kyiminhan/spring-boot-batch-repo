@@ -5,13 +5,15 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.kyiminhan.mm.spring.task.TaskOne;
-import com.kyiminhan.mm.spring.task.TaskTwo;
+import com.kyiminhan.mm.spring.entity.Employee;
+import com.kyiminhan.mm.spring.reader.EmployeeFlatFileItemReader;
+import com.kyiminhan.mm.spring.writer.ConsoleWriter;
 
 /**
  * The Class BatchConfig.<BR>
@@ -19,7 +21,7 @@ import com.kyiminhan.mm.spring.task.TaskTwo;
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
  * @since 2019/06/24 <BR>
- *        spring-batch-008 system <BR>
+ *        spring-batch-009 system <BR>
  *        com.kyiminhan.mm.spring.config <BR>
  *        BatchConfig.java <BR>
  */
@@ -28,59 +30,41 @@ import com.kyiminhan.mm.spring.task.TaskTwo;
 @ComponentScan(basePackages = "com.kyiminhan.mm")
 public class BatchConfig {
 
-	/** The jobs. */
+	/** The job builder factory. */
 	@Autowired
-	private JobBuilderFactory jobs;
+	private JobBuilderFactory jobBuilderFactory;
 
-	/** The steps. */
+	/** The step builder factory. */
 	@Autowired
-	private StepBuilderFactory steps;
+	private StepBuilderFactory stepBuilderFactory;
 
-	/** The task one. */
+	/** The console writer. */
 	@Autowired
-	private TaskOne taskOne;
+	private ConsoleWriter<Employee> consoleWriter;
 
-	/** The task two. */
+	/** The employee flat file item reader. */
 	@Autowired
-	private TaskTwo taskTwo;
+	private EmployeeFlatFileItemReader employeeFlatFileItemReader;
 
 	/**
-	 * Step one.
+	 * Read CSV files job.
+	 *
+	 * @return Job
+	 */
+	@Bean
+	public Job readCSVFilesJob() {
+		return this.jobBuilderFactory.get("readCSVFilesJob").incrementer(new RunIdIncrementer()).start(this.step1())
+				.build();
+	}
+
+	/**
+	 * Step 1.
 	 *
 	 * @return Step
 	 */
 	@Bean
-	public Step stepOne() {
-		return this.steps.get("stepOne").tasklet(this.taskOne).build();
-	}
-
-	/**
-	 * Step two.
-	 *
-	 * @return Step
-	 */
-	@Bean
-	public Step stepTwo() {
-		return this.steps.get("stepTwo").tasklet(this.taskTwo).build();
-	}
-
-	/**
-	 * Demo job one.
-	 *
-	 * @return Job
-	 */
-	@Bean(name = "demoJobOne")
-	public Job demoJobOne() {
-		return this.jobs.get("demoJobOne").start(this.stepOne()).next(this.stepTwo()).build();
-	}
-
-	/**
-	 * Demo job two.
-	 *
-	 * @return Job
-	 */
-	@Bean(name = "demoJobTwo")
-	public Job demoJobTwo() {
-		return this.jobs.get("demoJobTwo").flow(this.stepOne()).build().build();
+	public Step step1() {
+		return this.stepBuilderFactory.get("step1").<Employee, Employee>chunk(5).reader(this.employeeFlatFileItemReader)
+				.writer(this.consoleWriter).build();
 	}
 }

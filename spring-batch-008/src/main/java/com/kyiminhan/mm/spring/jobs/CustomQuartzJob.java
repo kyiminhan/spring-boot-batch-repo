@@ -19,18 +19,25 @@ import lombok.extern.log4j.Log4j2;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/21 <BR>
- *        spring-batch-007 system <BR>
+ * @since 2019/06/24 <BR>
+ *        spring-batch-008 system <BR>
  *        com.kyiminhan.mm.spring.jobs <BR>
  *        CustomQuartzJob.java <BR>
  */
+
+/** The Constant log. */
 @Log4j2
 @PersistJobDataAfterExecution
 @DisallowConcurrentExecution
 public class CustomQuartzJob extends QuartzJobBean {
 
+	/** The job name. */
 	private String jobName;
+	
+	/** The job launcher. */
 	private JobLauncher jobLauncher;
+	
+	/** The job locator. */
 	private JobLocator jobLocator;
 
 	public String getJobName() {

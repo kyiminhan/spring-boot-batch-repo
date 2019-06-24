@@ -25,14 +25,32 @@ import com.kyiminhan.mm.spring.jobs.CustomQuartzJob;
 
 import lombok.Setter;
 
+/**
+ * The Class QuartzConfig.<BR>
+ *
+ * @author KYIMINHAN <BR>
+ * @version 1.0 <BR>
+ * @since 2019/06/24 <BR>
+ *        spring-batch-008 system <BR>
+ *        com.kyiminhan.mm.spring.config <BR>
+ *        QuartzConfig.java <BR>
+ */
 @Configuration
 @Setter(onMethod = @__(@Autowired))
 public class QuartzConfig {
 
+	/** The job launcher. */
 	private JobLauncher jobLauncher;
 
+	/** The job locator. */
 	private JobLocator jobLocator;
 
+	/**
+	 * Job registry bean post processor.
+	 *
+	 * @param jobRegistry the job registry
+	 * @return JobRegistryBeanPostProcessor
+	 */
 	@Bean
 	public JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor(final JobRegistry jobRegistry) {
 		final JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor = new JobRegistryBeanPostProcessor();
@@ -40,6 +58,11 @@ public class QuartzConfig {
 		return jobRegistryBeanPostProcessor;
 	}
 
+	/**
+	 * Job one detail.
+	 *
+	 * @return JobDetail
+	 */
 	@Bean
 	public JobDetail jobOneDetail() {
 		final JobDataMap jobDataMap = new JobDataMap();
@@ -51,6 +74,11 @@ public class QuartzConfig {
 				.storeDurably().build();
 	}
 
+	/**
+	 * Job two detail.
+	 *
+	 * @return JobDetail
+	 */
 	@Bean
 	public JobDetail jobTwoDetail() {
 		final JobDataMap jobDataMap = new JobDataMap();
@@ -62,6 +90,11 @@ public class QuartzConfig {
 				.storeDurably().build();
 	}
 
+	/**
+	 * Job one trigger.
+	 *
+	 * @return Trigger
+	 */
 	@Bean
 	public Trigger jobOneTrigger() {
 		final SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(10)
@@ -71,6 +104,11 @@ public class QuartzConfig {
 				.withSchedule(scheduleBuilder).build();
 	}
 
+	/**
+	 * Job two trigger.
+	 *
+	 * @return Trigger
+	 */
 	@Bean
 	public Trigger jobTwoTrigger() {
 		final SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(20)
@@ -80,6 +118,13 @@ public class QuartzConfig {
 				.withSchedule(scheduleBuilder).build();
 	}
 
+	/**
+	 * Scheduler factory bean.
+	 *
+	 * @return SchedulerFactoryBean
+	 * @throws IOException        Signals that an I/O exception has occurred.
+	 * @throws SchedulerException the scheduler exception
+	 */
 	@Bean
 	public SchedulerFactoryBean schedulerFactoryBean() throws IOException, SchedulerException {
 		final SchedulerFactoryBean scheduler = new SchedulerFactoryBean();
@@ -90,6 +135,12 @@ public class QuartzConfig {
 		return scheduler;
 	}
 
+	/**
+	 * Quartz properties.
+	 *
+	 * @return Properties
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public Properties quartzProperties() throws IOException {
 		final PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
 		propertiesFactoryBean.setLocation(new ClassPathResource("/quartz.properties"));

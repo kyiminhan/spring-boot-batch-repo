@@ -13,11 +13,13 @@ import lombok.extern.log4j.Log4j2;
  *
  * @author KYIMINHAN <BR>
  * @version 1.0 <BR>
- * @since 2019/06/21 <BR>
- *        spring-batch-007 system <BR>
+ * @since 2019/06/24 <BR>
+ *        spring-batch-008 system <BR>
  *        com.kyiminhan.mm.spring.task <BR>
  *        TaskTwo.java <BR>
  */
+
+/** The Constant log. */
 @Log4j2
 @Component
 public class TaskTwo implements Tasklet {
