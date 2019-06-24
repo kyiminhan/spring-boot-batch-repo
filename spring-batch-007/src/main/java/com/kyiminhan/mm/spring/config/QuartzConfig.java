@@ -43,7 +43,7 @@ public class QuartzConfig {
 	public JobDetail jobOneDetail() {
 		final JobDataMap jobDataMap = new JobDataMap();
 		jobDataMap.put("jobName", "demoJobOne");
-		jobDataMap.put("jobLuncher", this.jobLauncher);
+		jobDataMap.put("jobLauncher", this.jobLauncher);
 		jobDataMap.put("jobLocator", this.jobLocator);
 
 		return JobBuilder.newJob(CustomQuartzJob.class).withIdentity("demoJobOne").setJobData(jobDataMap).storeDurably()
