@@ -13,7 +13,7 @@
 	<artifactId>spring-batch-012</artifactId>
 	<version>0.0.1</version>
 	<name>spring-batch-012</name>
-	<description>Spring Batch Item Count Item Stream</description>
+	<description>Spring Batch Item Count Item Stream(Spring Batch Count of Processed Records)</description>
 
 	<properties>
 		<java.version>1.8</java.version>
