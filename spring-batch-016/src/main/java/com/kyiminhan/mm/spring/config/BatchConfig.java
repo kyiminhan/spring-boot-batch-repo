@@ -48,8 +48,6 @@ import lombok.extern.log4j.Log4j2;
 @ComponentScan(basePackages = "com.kyiminhan.mm")
 
 /** The Constant log. */
-
-/** The Constant log. */
 @Log4j2
 public class BatchConfig {
 
